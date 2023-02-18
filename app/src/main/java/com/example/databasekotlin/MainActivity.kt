@@ -1,5 +1,6 @@
 package com.example.databasekotlin
 
+import com.example.databasekotlin.workouts
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -17,18 +18,20 @@ class ActivityKotlin : AppCompatActivity() {
 
     lateinit var et_username: EditText
     lateinit var et_password: EditText
-    lateinit var btn_login: Button
+    lateinit var btn_login: Button //there
+    lateinit var btn_create_account: Button //there
+    lateinit var btn_delete_account: Button //there
+    lateinit var btn_update_password: Button //there
+    lateinit var btn_delete_tables: Button //there
+    lateinit var btn_enter_data_33_35: Button
+    lateinit var btn_workout: Button
 
 
-    lateinit var btn_create_account: Button
-    lateinit var btn_delete_account: Button
-    lateinit var btn_user_info: Button
+    /*lateinit var btn_user_info: Button
     lateinit var btn_class_testing: Button
-    lateinit var btn_update_password: Button
     lateinit var btn_update_FTP: Button
-    lateinit var btn_delete_tables: Button
     lateinit var btn_history_error_tables: Button
-    lateinit var btn_view_history_error_tables: Button
+    lateinit var btn_view_history_error_tables: Button*/
 
 
     override fun onCreate(savedInstanceState: Bundle?) { //starts the application
@@ -41,14 +44,15 @@ class ActivityKotlin : AppCompatActivity() {
         btn_login = findViewById(R.id.btnLogin)
         btn_create_account = findViewById(R.id.btnCreateAccount)
         btn_delete_account = findViewById(R.id.btnDelete)
-        btn_user_info = findViewById(R.id.btnUserInfo)
-        btn_class_testing = findViewById(R.id.btnClassTesting)
+        //btn_user_info = findViewById(R.id.btnUserInfo)
+        //btn_class_testing = findViewById(R.id.btnClassTesting)
         btn_update_password = findViewById(R.id.btnUpdatePassword)
-        btn_update_FTP = findViewById(R.id.btnUpdateFTP)
+        //btn_update_FTP = findViewById(R.id.btnUpdateFTP)
         btn_delete_tables = findViewById(R.id.btnDeleteTables)
-        btn_history_error_tables = findViewById(R.id.btnHistoryErrorTables)
-        btn_view_history_error_tables = findViewById(R.id.btnViewHistoryErrorTables)
-
+        //btn_history_error_tables = findViewById(R.id.btnHistoryErrorTables)
+        //btn_view_history_error_tables = findViewById(R.id.btnViewHistoryErrorTables)
+        btn_enter_data_33_35 = findViewById(R.id.btnEnterData3335)
+        btn_workout = findViewById(R.id.btnWorkout)
 
         //Test Data
         val FTP = 1
@@ -59,7 +63,7 @@ class ActivityKotlin : AppCompatActivity() {
         val pz_5 = 5
         val pz_6 = 6
         val pz_7 = 7
-        val time_33 = 1.0
+        val time_33 = 1201.0
         val interval = 2
         val power = 3
         val total_cal = 4
@@ -81,6 +85,7 @@ class ActivityKotlin : AppCompatActivity() {
         val workout_num = "workout1"
         val error = 1
         val avg_power = 2.3
+        val username = "bob"
 
         //testing
 
@@ -154,7 +159,7 @@ class ActivityKotlin : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         })
-        btn_user_info.setOnClickListener(
+        /*btn_user_info.setOnClickListener(
             View.OnClickListener
             //Display Information
             {
@@ -212,8 +217,8 @@ class ActivityKotlin : AppCompatActivity() {
                     "dataframe35: $time35 $dist $drive_len $drive_time $stroke_dist $peak_drive_force $avg_drive_force $work_per_stroke $stroke_count",
                     Toast.LENGTH_SHORT
                 ).show()
-            })
-        btn_class_testing.setOnClickListener(View.OnClickListener {
+            })*/
+        /*btn_class_testing.setOnClickListener(View.OnClickListener {
             //Testing User class
             val user = User(
                 et_username.getText().toString(),
@@ -280,7 +285,7 @@ class ActivityKotlin : AppCompatActivity() {
                 Toast.makeText(this@ActivityKotlin, "Did not enter table", Toast.LENGTH_SHORT)
                     .show() //Testing
             }
-        })
+        })*/
         btn_update_password.setOnClickListener(View.OnClickListener {
             val db = DatabaseHelper(this@ActivityKotlin) //making reference to database
             val usernameTXT = et_username.getText().toString()
@@ -295,7 +300,7 @@ class ActivityKotlin : AppCompatActivity() {
                     .show()
             }
         })
-        btn_update_FTP.setOnClickListener(View.OnClickListener {
+/*        btn_update_FTP.setOnClickListener(View.OnClickListener {
             val db = DatabaseHelper(this@ActivityKotlin) //making reference to database
             val usernameTXT = et_username.getText().toString()
             val passwordTXT = et_password.getText().toString()
@@ -308,7 +313,7 @@ class ActivityKotlin : AppCompatActivity() {
             } else {
                 Toast.makeText(this@ActivityKotlin, "FTP is not Updated", Toast.LENGTH_SHORT).show()
             }
-        })
+        })*/
         btn_delete_tables.setOnClickListener(View.OnClickListener {
             val db = DatabaseHelper(this@ActivityKotlin) //making reference to database
             val success1 = db.delete_dataframe33_table()
@@ -318,7 +323,7 @@ class ActivityKotlin : AppCompatActivity() {
             Toast.makeText(this@ActivityKotlin, "dataframe35 table Deleted", Toast.LENGTH_SHORT)
                 .show()
         })
-        btn_history_error_tables.setOnClickListener(View.OnClickListener {
+/*        btn_history_error_tables.setOnClickListener(View.OnClickListener {
             val db = DatabaseHelper(this@ActivityKotlin) //making reference to database
             val usernameTXT = et_username.getText().toString()
             val passwordTXT = et_password.getText().toString()
@@ -340,7 +345,7 @@ class ActivityKotlin : AppCompatActivity() {
             }
 
 
-            /*                //Testing adding to error table
+            *//*                //Testing adding to error table
                             int error = 5;
                             boolean success2 = db.add_error(usernameTXT,error);
                             if (success2 == true){
@@ -348,9 +353,9 @@ class ActivityKotlin : AppCompatActivity() {
                             }
                             else {
                                 Toast.makeText(MainActivity.this, "error not added to history table", Toast.LENGTH_SHORT).show();
-                            }*/
-        })
-        btn_view_history_error_tables.setOnClickListener(View.OnClickListener {
+                            }*//*
+        })*/
+/*        btn_view_history_error_tables.setOnClickListener(View.OnClickListener {
             val db = DatabaseHelper(this@ActivityKotlin) //making reference to database
             val usernameTXT = et_username.getText().toString()
             val passwordTXT = et_password.getText().toString()
@@ -383,7 +388,7 @@ class ActivityKotlin : AppCompatActivity() {
             res.close()
 
 
-            /*                //display error table user specific
+            *//*                //display error table user specific
                             Cursor res2 = db.get_error(usernameTXT);
                             if(res2.getCount() == 0) {
                                 Toast.makeText(MainActivity.this,"No Error Exists", Toast.LENGTH_SHORT).show();
@@ -399,7 +404,48 @@ class ActivityKotlin : AppCompatActivity() {
                             builder2.setTitle(usernameTXT+" Errors");
                             builder2.setMessage(buffer2.toString());
                             builder2.show();
-                            res2.close();*/
+                            res2.close();*//*
+        })*/
+        btn_workout.setOnClickListener(View.OnClickListener
+        //Display Information
+        {
+            val db = DatabaseHelper(this@ActivityKotlin) //making reference to database
+            val usernameTXT = et_username.getText().toString()
+            val passwordTXT = et_password.getText().toString()
+            val workouts = workouts()
+            val time = workouts.ftpCalc(usernameTXT, db)
+            Toast.makeText(this@ActivityKotlin, "Testing Workout", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@ActivityKotlin, "time $time", Toast.LENGTH_SHORT).show()
+        })
+        btn_enter_data_33_35.setOnClickListener(View.OnClickListener {
+            //Testing User class
+            val user = User(et_username.getText().toString(), et_password.getText().toString(), FTP, pz_1, pz_2, pz_3, pz_4, pz_5, pz_6, pz_7) // Fill in class constructor
+            Toast.makeText(this@ActivityKotlin, user.toString(), Toast.LENGTH_SHORT).show()
+
+
+            //Testing Real Time data classes
+            val databaseHelper = DatabaseHelper(this@ActivityKotlin) //making reference to database
+
+            //Testing dataframe33
+            val realdata1 = dataframe33(time_33, interval, power, total_cal, split_pace, split_power, split_cal, last_split_time, last_split_dist)
+            Toast.makeText(this@ActivityKotlin, realdata1.toString(), Toast.LENGTH_SHORT).show() //Testing
+            val success1 = databaseHelper.add_dataframe33(realdata1)
+            if (success1 == true) {
+                Toast.makeText(this@ActivityKotlin, "Successfully entered table", Toast.LENGTH_SHORT).show() //Testing
+            } else {
+                Toast.makeText(this@ActivityKotlin, "Did not enter table", Toast.LENGTH_SHORT).show() //Testing
+            }
+
+
+            //Testing dataframe35
+            val realdata2 = dataframe35(time_35, dist, drive_len, drive_time, stroke_rec_time, stroke_dist, peak_drive_force, avg_drive_force, work_per_stroke, stroke_count)
+            Toast.makeText(this@ActivityKotlin, realdata2.toString(), Toast.LENGTH_SHORT).show() //Testing
+            val success2 = databaseHelper.add_dataframe35(realdata2)
+            if (success2 == true) {
+                Toast.makeText(this@ActivityKotlin, "Successfully entered table", Toast.LENGTH_SHORT).show() //Testing
+            } else {
+                Toast.makeText(this@ActivityKotlin, "Did not enter table", Toast.LENGTH_SHORT).show() //Testing
+            }
         })
     }
 }
