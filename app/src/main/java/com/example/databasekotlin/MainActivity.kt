@@ -413,9 +413,9 @@ class ActivityKotlin : AppCompatActivity() {
             val usernameTXT = et_username.getText().toString()
             val passwordTXT = et_password.getText().toString()
             val workouts = workouts()
-            val time = workouts.ftpCalc(usernameTXT, db)
+            val pow = workouts.ftpCalc(usernameTXT, db)
             Toast.makeText(this@ActivityKotlin, "Testing Workout", Toast.LENGTH_SHORT).show()
-            Toast.makeText(this@ActivityKotlin, "time $time", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@ActivityKotlin, "time $pow", Toast.LENGTH_SHORT).show()
         })
         btn_enter_data_33_35.setOnClickListener(View.OnClickListener {
             //Testing User class

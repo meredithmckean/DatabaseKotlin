@@ -49,14 +49,14 @@ class workouts : AppCompatActivity() {
     // ftp calculator workout method
     // TODO changed from ftp_calc to ftpCalc
     // TODO In main activity change db constructor
-    fun ftpCalc(username: String?, db: DatabaseHelper): Int {
+    fun ftpCalc(username: String, db: DatabaseHelper): Int {
         //ftp calculator code that calculates ftp and defines power zones
         //method returns integer ftp value
         //System.out.println("You are now in the ftp workout!");
         //System.out.println("Please row for 20 minutes at a pace that is challenging but sustainable");
         var sum = 0
         var length = 0
-        ftp = 50
+        //ftp = 50
         while (db.time_33 < 1200) {
             //sum = 50; //testing
             sum += db.power
@@ -76,7 +76,7 @@ class workouts : AppCompatActivity() {
         pz_7 = (1.51 * ftp).toInt() //Max Effort: >151% of FTP
 
         //uncomment
-        // db.updateuserFTP(username, this.ftp, this.pz_1, this.pz_2, this.pz_3, this.pz_4, this.pz_5, this.pz_6, this.pz_7);
+        db.updateuserFTP(username, this.ftp, this.pz_1, this.pz_2, this.pz_3, this.pz_4, this.pz_5, this.pz_6, this.pz_7);
         return ftp
     }
 
@@ -108,7 +108,7 @@ class workouts : AppCompatActivity() {
         var k22 = 0
         //for (int i = 0; i < time_33.size(); i++) {
         // 5 min at zone 2
-        while (db.getTime_33 <= 300) {
+        while (db.time_33 <= 300) {
             //TODO how to integrate with UI
             if (k1 == 0) {
                 println()
@@ -118,7 +118,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k1 = 100
             }
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -130,7 +130,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 40 sec at zone 5
-        while (db.getTime_33 <= 340 && db.getTime_33 > 300) {
+        while (db.time_33 <= 340 && db.time_33 > 300) {
             if (k2 == 0) {
                 println()
                 println("**********************")
@@ -139,7 +139,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k2 = 100
             }
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -151,7 +151,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 20 sec at zone 2
-        while (db.getTime_33 <= 360 && db.getTime_33 > 340) {
+        while (db.time_33 <= 360 && db.time_33 > 340) {
             if (k3 == 0) {
                 println()
                 println("**********************")
@@ -160,7 +160,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k3 = 100
             }
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -172,7 +172,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 40 sec at zone 5
-        while (db.getTime_33 <= 400 && db.getTime_33 > 360) {
+        while (db.time_33 <= 400 && db.time_33 > 360) {
             if (k4 == 0) {
                 println()
                 println("**********************")
@@ -181,7 +181,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k4 = 100
             }
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -193,7 +193,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 20 sec at zone 2
-        while (db.getTime_33 <= 420 && db.getTime_33 > 400) {
+        while (db.time_33 <= 420 && db.time_33 > 400) {
             if (k5 == 0) {
                 println()
                 println("**********************")
@@ -202,7 +202,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k5 = 100
             }
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -214,7 +214,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 40 sec at zone 5
-        while (db.getTime_33 <= 460 && db.getTime_33 > 420) {
+        while (db.time_33 <= 460 && db.time_33 > 420) {
             if (k6 == 0) {
                 println()
                 println("**********************")
@@ -223,7 +223,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k6 = 100
             }
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -235,7 +235,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 20 sec at zone 2
-        while (db.getTime_33 <= 480 && db.getTime_33 > 460) {
+        while (db.time_33 <= 480 && db.time_33 > 460) {
             if (k7 == 0) {
                 println()
                 println("**********************")
@@ -244,7 +244,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k7 = 100
             }
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -256,7 +256,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 40 sec at zone 5
-        while (db.getTime_33 <= 520 && db.getTime_33 > 480) {
+        while (db.time_33 <= 520 && db.time_33 > 480) {
             if (k8 == 0) {
                 println()
                 println("**********************")
@@ -265,7 +265,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k8 = 100
             }
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -277,7 +277,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 20 sec at zone 2
-        while (db.getTime_33 <= 540 && db.getTime_33 > 520) {
+        while (db.time_33 <= 540 && db.time_33 > 520) {
             if (k9 == 0) {
                 println()
                 println("**********************")
@@ -286,7 +286,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k9 = 100
             }
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -298,7 +298,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 40 sec at zone 5
-        while (db.getTime_33 <= 580 && db.getTime_33 > 540) {
+        while (db.time_33 <= 580 && db.time_33 > 540) {
             if (k10 == 0) {
                 println()
                 println("**********************")
@@ -307,7 +307,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k10 = 100
             }
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -319,7 +319,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 20 sec at zone 2
-        while (db.getTime_33 <= 600 && db.getTime_33 > 580) {
+        while (db.time_33 <= 600 && db.time_33 > 580) {
             if (k11 == 0) {
                 println()
                 println("**********************")
@@ -328,7 +328,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k11 = 100
             }
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -340,7 +340,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 40 sec at zone 5
-        while (db.getTime_33 <= 640 && db.getTime_33 > 600) {
+        while (db.time_33 <= 640 && db.time_33 > 600) {
             if (k12 == 0) {
                 println()
                 println("**********************")
@@ -349,7 +349,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k12 = 100
             }
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -361,7 +361,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 20 sec at zone 2
-        while (db.getTime_33 <= 660 && db.getTime_33 > 640) {
+        while (db.time_33 <= 660 && db.time_33 > 640) {
             if (k13 == 0) {
                 println()
                 println("**********************")
@@ -370,7 +370,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k13 = 100
             }
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -382,7 +382,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 40 sec at zone 5
-        while (db.getTime_33 <= 700 && db.getTime_33 > 660) {
+        while (db.time_33 <= 700 && db.time_33 > 660) {
             if (k14 == 0) {
                 println()
                 println("**********************")
@@ -391,7 +391,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k14 = 100
             }
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -403,7 +403,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 20 sec at zone 2
-        while (db.getTime_33 <= 720 && db.getTime_33 > 700) {
+        while (db.time_33 <= 720 && db.time_33 > 700) {
             if (k15 == 0) {
                 println()
                 println("**********************")
@@ -412,7 +412,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k15 = 100
             }
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -424,7 +424,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 40 sec at zone 5
-        while (db.getTime_33 <= 760 && db.getTime_33 > 720) {
+        while (db.time_33 <= 760 && db.time_33 > 720) {
             if (k16 == 0) {
                 println()
                 println("**********************")
@@ -433,7 +433,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k16 = 100
             }
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -445,7 +445,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 20 sec at zone 2
-        while (db.getTime_33 <= 780 && db.getTime_33 > 760) {
+        while (db.time_33 <= 780 && db.time_33 > 760) {
             if (k17 == 0) {
                 println()
                 println("**********************")
@@ -454,7 +454,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k17 = 100
             }
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -466,7 +466,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 40 sec at zone 5
-        while (db.getTime_33 <= 820 && db.getTime_33 > 780) {
+        while (db.time_33 <= 820 && db.time_33 > 780) {
             if (k18 == 0) {
                 println()
                 println("**********************")
@@ -475,7 +475,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k18 = 100
             }
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -487,7 +487,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 20 sec at zone 2
-        while (db.getTime_33 <= 840 && db.getTime_33 > 820) {
+        while (db.time_33 <= 840 && db.time_33 > 820) {
             if (k19 == 0) {
                 println()
                 println("**********************")
@@ -496,7 +496,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k19 = 100
             }
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -508,7 +508,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 40 sec at zone 5
-        while (db.getTime_33 <= 880 && db.getTime_33 > 840) {
+        while (db.time_33 <= 880 && db.time_33 > 840) {
             if (k20 == 0) {
                 println()
                 println("**********************")
@@ -517,7 +517,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k20 = 100
             }
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -529,7 +529,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 20 sec at zone 2
-        while (db.getTime_33 <= 900 && db.getTime_33 > 880) {
+        while (db.time_33 <= 900 && db.time_33 > 880) {
             if (k21 == 0) {
                 println()
                 println("**********************")
@@ -538,7 +538,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k21 = 100
             }
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -550,7 +550,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 5 min at zone 1
-        while (db.getTime_33 <= 1200 && db.getTime_33 > 900) {
+        while (db.time_33 <= 1200 && db.time_33 > 900) {
             if (k22 == 0) {
                 println()
                 println("**********************")
@@ -559,7 +559,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k22 = 100
             }
-            if (db.getPower >= pz_2) {
+            if (db.power >= pz_2) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 1!!!!")
@@ -589,7 +589,7 @@ class workouts : AppCompatActivity() {
         var k6 = 0
         //for (int i = 0; i < time_33.size(); i++) {
         // 6 min at zone 3
-        while (db.getTime_33 <= 360) {
+        while (db.time_33 <= 360) {
             if (k1 == 0) {
                 println()
                 println("**********************")
@@ -598,7 +598,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k1 = 100
             }
-            if (db.getPower < pz_3 || db.getPower >= pz_4) {
+            if (db.power < pz_3 || db.power >= pz_4) {
                 count++
                 if (count > 2) {
                     println("You aren't in power zone 3!!!!")
@@ -610,7 +610,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 5 min at zone 1
-        while (db.getTime_33 <= 660 && db.getTime_33 > 360) {
+        while (db.time_33 <= 660 && db.time_33 > 360) {
             if (k2 == 0) {
                 println()
                 println("**********************")
@@ -619,7 +619,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k2 = 100
             }
-            if (db.getPower >= pz_2) {
+            if (db.power >= pz_2) {
                 count++
                 if (count > 2) {
                     println("You aren't in power zone 1!!!!")
@@ -631,7 +631,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 5 min at zone 4
-        while (db.getTime_33 <= 960 && db.getTime_33 > 660) {
+        while (db.time_33 <= 960 && db.time_33 > 660) {
             if (k3 == 0) {
                 println()
                 println("**********************")
@@ -641,7 +641,7 @@ class workouts : AppCompatActivity() {
                 k3 = 100
             }
             //System.out.println("Row in power zone 4");
-            if (db.getPower < pz_4 || db.getPower >= pz_5) {
+            if (db.power < pz_4 || db.power >= pz_5) {
                 count++
                 if (count > 2) {
                     println("You aren't in power zone 4!!!!")
@@ -653,7 +653,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 5 min at zone 1
-        while (db.getTime_33 <= 1260 && db.getTime_33 > 960) {
+        while (db.time_33 <= 1260 && db.time_33 > 960) {
             if (k4 == 0) {
                 println()
                 println("**********************")
@@ -662,7 +662,7 @@ class workouts : AppCompatActivity() {
                 println()
                 k4 = 100
             }
-            if (db.getPower >= pz_2) {
+            if (db.power >= pz_2) {
                 count++
                 if (count > 2) {
                     println("You aren't in power zone 1!!!!")
@@ -674,7 +674,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 4 min at zone 5
-        while (db.getTime_33 <= 1500 && db.getTime_33 > 1260) {
+        while (db.time_33 <= 1500 && db.time_33 > 1260) {
             if (k5 == 0) {
                 println()
                 println("**********************")
@@ -684,7 +684,7 @@ class workouts : AppCompatActivity() {
                 k5 = 100
             }
             //System.out.println("Row in power zone 5");
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 2) {
                     println("You aren't in power zone 5!!!!")
@@ -696,7 +696,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 5 min at zone 1
-        while (db.getTime_33 <= 1800 && db.getTime_33 > 1500) {
+        while (db.time_33 <= 1800 && db.time_33 > 1500) {
             if (k6 == 0) {
                 println()
                 println("**********************")
@@ -706,7 +706,7 @@ class workouts : AppCompatActivity() {
                 k6 = 100
             }
             //System.out.println("Row in power zone 1");
-            if (db.getPower >= pz_2) {
+            if (db.power >= pz_2) {
                 count++
                 if (count > 2) {
                     println("You aren't in power zone 1!!!!")
@@ -742,7 +742,7 @@ class workouts : AppCompatActivity() {
 
         //for (int i = 0; i < time_33.size(); i++) {
         // 2 min at zone 2
-        while (db.getTime_33 <= 120) {
+        while (db.time_33 <= 120) {
             if (k1 == 0) {
                 println()
                 println("**********************")
@@ -752,7 +752,7 @@ class workouts : AppCompatActivity() {
                 k1 = 100
             }
             //System.out.println("Row in power zone 2");
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -764,7 +764,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 1 min at zone 5
-        while (db.getTime_33 <= 180 && db.getTime_33 > 120) {
+        while (db.time_33 <= 180 && db.time_33 > 120) {
             if (k2 == 0) {
                 println()
                 println("**********************")
@@ -774,7 +774,7 @@ class workouts : AppCompatActivity() {
                 k2 = 100
             }
             //System.out.println("Row at a fast pace!!");
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -786,7 +786,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 2 min at zone 2
-        while (db.getTime_33 <= 300 && db.getTime_33 > 180) {
+        while (db.time_33 <= 300 && db.time_33 > 180) {
             if (k3 == 0) {
                 println()
                 println("**********************")
@@ -796,7 +796,7 @@ class workouts : AppCompatActivity() {
                 k3 = 100
             }
             //System.out.println("Row in power zone 2");
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -808,7 +808,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 1 min at zone 5
-        while (db.getTime_33 <= 360 && db.getTime_33 > 300) {
+        while (db.time_33 <= 360 && db.time_33 > 300) {
             if (k4 == 0) {
                 println()
                 println("**********************")
@@ -818,7 +818,7 @@ class workouts : AppCompatActivity() {
                 k4 = 100
             }
             //System.out.println("Row at a fast pace!!");
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -830,7 +830,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 2 min at zone 2
-        while (db.getTime_33 <= 480 && db.getTime_33 > 360) {
+        while (db.time_33 <= 480 && db.time_33 > 360) {
             if (k5 == 0) {
                 println()
                 println("**********************")
@@ -840,7 +840,7 @@ class workouts : AppCompatActivity() {
                 k5 = 100
             }
             //System.out.println("Row in power zone 2");
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -852,7 +852,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 1 min at zone 5
-        while (db.getTime_33 <= 540 && db.getTime_33 > 480) {
+        while (db.time_33 <= 540 && db.time_33 > 480) {
             if (k6 == 0) {
                 println()
                 println("**********************")
@@ -862,7 +862,7 @@ class workouts : AppCompatActivity() {
                 k6 = 100
             }
             //System.out.println("Row at a fast pace!!");
-            if (db.getPower < pz_5 || db.getPower >= pz_6) {
+            if (db.power < pz_5 || db.power >= pz_6) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 5!!!!")
@@ -874,7 +874,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 2 min at zone 2
-        while (db.getTime_33 <= 660 && db.getTime_33 > 540) {
+        while (db.time_33 <= 660 && db.time_33 > 540) {
             if (k7 == 0) {
                 println()
                 println("**********************")
@@ -884,7 +884,7 @@ class workouts : AppCompatActivity() {
                 k7 = 100
             }
             //System.out.println("Row in power zone 2");
-            if (db.getPower < pz_2 || db.getPower >= pz_3) {
+            if (db.power < pz_2 || db.power >= pz_3) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 2!!!!")
@@ -896,7 +896,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 10 min at zone 4
-        while (db.getTime_33 <= 1260 && db.getTime_33 > 660) {
+        while (db.time_33 <= 1260 && db.time_33 > 660) {
             if (k8 == 0) {
                 println()
                 println("**********************")
@@ -906,7 +906,7 @@ class workouts : AppCompatActivity() {
                 k8 = 100
             }
             //System.out.println("Row in power zone 4");
-            if (db.getPower < pz_4 || db.getPower >= pz_5) {
+            if (db.power < pz_4 || db.power >= pz_5) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 4!!!!")
@@ -918,7 +918,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 5 min at zone 1
-        while (db.getTime_33 <= 1560 && db.getTime_33 > 1260) {
+        while (db.time_33 <= 1560 && db.time_33 > 1260) {
             if (k9 == 0) {
                 println()
                 println("**********************")
@@ -928,7 +928,7 @@ class workouts : AppCompatActivity() {
                 k9 = 100
             }
             //System.out.println("Row in power zone 1");
-            if (db.getPower >= pz_2) {
+            if (db.power >= pz_2) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 1!!!!")
@@ -940,7 +940,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 10 min at zone 4
-        while (db.getTime_33 <= 2160 && db.getTime_33 > 1560) {
+        while (db.time_33 <= 2160 && db.time_33 > 1560) {
             if (k10 == 0) {
                 println()
                 println("**********************")
@@ -950,7 +950,7 @@ class workouts : AppCompatActivity() {
                 k10 = 100
             }
             //System.out.println("Row in power zone 4");
-            if (db.getPower < pz_4 || db.getPower >= pz_5) {
+            if (db.power < pz_4 || db.power >= pz_5) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 4!!!!")
@@ -962,7 +962,7 @@ class workouts : AppCompatActivity() {
             }
         }
         // 5 min at zone 1
-        while (db.getTime_33 <= 2460 && db.getTime_33 > 2160) {
+        while (db.time_33 <= 2460 && db.time_33 > 2160) {
             if (k11 == 0) {
                 println()
                 println("**********************")
@@ -972,7 +972,7 @@ class workouts : AppCompatActivity() {
                 k11 = 100
             }
             //System.out.println("Row in power zone 1");
-            if (db.getPower >= pz_2) {
+            if (db.power >= pz_2) {
                 count++
                 if (count > 4) {
                     println("You aren't in power zone 1!!!!")
@@ -989,7 +989,6 @@ class workouts : AppCompatActivity() {
         return fail_count_3
     }
 
-    @Throws(IOException::class)
     fun pace(length: Int, db: DatabaseHelper) {
         //pace code
         var count = 0
@@ -1002,9 +1001,9 @@ class workouts : AppCompatActivity() {
             println()
             //ignore first 5 to allow for user to get to steady state
             //for (int i = 5; i < time_33.size(); i++) {
-            while (db.getTime_33 <= 1200) { // less than 20-min
+            while (db.time_33 <= 1200) { // less than 20-min
                 //if difference between current stroke and previous stroke is greater than 4 watts
-                if (Math.abs(db.getPower - db.getPastPower) > 4) {
+                if (Math.abs(db.power - db.pastPower) > 4) {
                     count++
                     if (count > 2) {
                         //TODO incorporate UI?
@@ -1026,9 +1025,9 @@ class workouts : AppCompatActivity() {
             println("**********************")
             println() //ignore first 5 to allow for user to get to steady state
             //for (int i = 5; i < time_33.size(); i++) {
-            if (db.getTime_33 <= 1800) { // less than 30-min
+            if (db.time_33 <= 1800) { // less than 30-min
                 //if difference between current stroke and previous stroke is greater than 4 watts
-                if (Math.abs(db.getPower - db.getPastPower) > 4) {
+                if (Math.abs(db.power - db.pastPower) > 4) {
                     count++
                     if (count > 2) {
                         println("Your power output is inconsistent! Try to improve pacing!")
@@ -1049,9 +1048,9 @@ class workouts : AppCompatActivity() {
             println("**********************")
             println() //ignore first 5 to allow for user to get to steady state
             //for (int i = 5; i < time_33.size(); i++) {
-            if (db.getTime_33 <= 2400) { // less than 40-min
+            if (db.time_33 <= 2400) { // less than 40-min
                 //if difference between current stroke and previous stroke is greater than 4 watts
-                if (Math.abs(db.getPower - db.getPastPower) > 4) {
+                if (Math.abs(db.power - db.pastPower) > 4) {
                     count++
                     if (count > 2) {
                         println("Your power output is inconsistent! Try to improve pacing!")
