@@ -1,6 +1,6 @@
 package com.example.databasekotlin
 
-class dataframe33 {
+class data33 {
     var time_33 = 0.0
     var interval = 0
     var power = 0

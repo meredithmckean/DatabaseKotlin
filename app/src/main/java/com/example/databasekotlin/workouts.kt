@@ -6,7 +6,6 @@ import com.example.databasekotlin.DatabaseHelper
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
-import java.util.ArrayList
 
 class workouts : AppCompatActivity() {
     private var ftp = 45
@@ -76,6 +75,16 @@ class workouts : AppCompatActivity() {
         pz_7 = (1.51 * ftp).toInt() //Max Effort: >151% of FTP
 
         //uncomment
+        pz_1 = 1
+        pz_2 = 1
+        pz_3 = 1
+        pz_4 = 1
+        pz_5 = 1
+        pz_6 = 1
+        pz_7 = 1
+        ftp = 45;
+        //TODO is this working??
+        println("about to load database")
         db.updateuserFTP(username, this.ftp, this.pz_1, this.pz_2, this.pz_3, this.pz_4, this.pz_5, this.pz_6, this.pz_7);
         return ftp
     }
@@ -571,8 +580,9 @@ class workouts : AppCompatActivity() {
             }
         }
         //}
-        println("fail count: $fail_count_1")
-        interval_predictor("1", fail_count_1)
+        //println("fail count: $fail_count_1")
+        //interval_predictor("1", fail_count_1)
+        fail_count_1 = 25 // for database integration testing
         return fail_count_1
     }
 
@@ -718,8 +728,9 @@ class workouts : AppCompatActivity() {
             }
         }
         //}
-        println("fail count: $fail_count_2")
-        interval_predictor("2", fail_count_2)
+        //println("fail count: $fail_count_2")
+        //interval_predictor("2", fail_count_2)
+        fail_count_2 = 25 //for database integration testing
         return fail_count_2
     }
 
@@ -962,14 +973,14 @@ class workouts : AppCompatActivity() {
             }
         }
         // 5 min at zone 1
-        while (db.time_33 <= 2460 && db.time_33 > 2160) {
+        if (db.time_33 <= 2460 && db.time_33 > 2160) {
             if (k11 == 0) {
-                println()
-                println("**********************")
-                println("Row in power zone 1")
-                println("**********************")
-                println()
-                k11 = 100
+                //println()
+                //println("**********************")
+                //println("Row in power zone 1")
+                //println("**********************")
+                //println()
+                k11 = 666
             }
             //System.out.println("Row in power zone 1");
             if (db.power >= pz_2) {
@@ -984,12 +995,13 @@ class workouts : AppCompatActivity() {
             }
         }
         //}
-        println("fail count: $fail_count_3")
-        interval_predictor("3", fail_count_3)
+        //println("fail count: $fail_count_3")
+        //interval_predictor("3", fail_count_3)
+        fail_count_3 = 66 //for database integration testing
         return fail_count_3
     }
 
-    fun pace(length: Int, db: DatabaseHelper) {
+    fun pace(length: Int, db: DatabaseHelper): Int {
         //pace code
         var count = 0
         val j = 0
@@ -1016,8 +1028,9 @@ class workouts : AppCompatActivity() {
                 }
             }
             //}
+            pace_fail_20 = 202020
             println("fail count 20: " + pace_fail_20)
-            pace_predictor("20", pace_fail_20)
+            //pace_predictor("20", pace_fail_20)
         } else if (length == 30) {
             println()
             println("**********************")
@@ -1039,8 +1052,9 @@ class workouts : AppCompatActivity() {
                 }
             }
             //}
+            pace_fail_30 = 303030
             println("fail count 30: " + pace_fail_30)
-            pace_predictor("30", pace_fail_30)
+            //pace_predictor("30", pace_fail_30)
         } else if (length == 40) {
             println()
             println("**********************")
@@ -1062,13 +1076,76 @@ class workouts : AppCompatActivity() {
                 }
             }
             //}
+            pace_fail_40 = 404040
             println("fail count 40: " + pace_fail_40)
-            pace_predictor("40", pace_fail_40)
+            //pace_predictor("40", pace_fail_40)
         }
+        return pace_fail_20
     }
+
+    fun powerPredictor(power: ArrayList<Int>) {
+        //TODO add statements about if list is empty or what to do if just one element
+        //TODO two elements is ok?
+
+        // declare empty x arraylist
+        val x = ArrayList<Int>()
+        val length = power.size
+        // sum up powers and x sequence
+        var x_sum = 0
+        var y_sum = 0
+        for (i in power.indices) {
+            x.add(i) //adding the sequence of x values into arraylist
+            y_sum += power[i]
+            x_sum += i
+        }
+        //calculate mean of x values
+        val x_mean = x_sum / length
+        //calculate mean of y values
+        val y_mean = y_sum / length
+
+        //numerator of slope equation
+        var num_sum = 0
+        var x_diff = 0
+        var y_diff = 0
+        for (i in 1..length+1){
+            x_diff = x[i] - x_mean
+            y_diff = power[i] - y_mean
+            num_sum += x_diff * y_diff
+        }
+        //denominator of slope equation
+        var den_sum = 0
+        var x_diff_den = 0
+        for (i in 1..length+1){
+            x_diff_den = x[i] - x_mean
+            den_sum += x_diff_den * x_diff_den
+        }
+
+        //compute slope of line of best fit
+        val slope = num_sum / den_sum
+
+        //compute y intercept of line of best fit
+        val y_int = y_mean - slope * x_mean
+
+        // in five more workouts your power output might be...
+        
+    }
+
+    //static void power_predictor() {
+    //database returns array of power of one workout type for one user
+    //calls this function with that array as a parameter
+    //
+    //if the history table has more than 1 entry
+    // if (len(data_table) > 1) {
+    //     linear regression of watts with sequence of 1 2 3 ... for x coordinate
+    //     if slope is positive make prediction of how many more workouts to do to get x watts of output
+    //     if slope is negative, make prediction of which workouts to work on? which workout is causing the decrease in power output
+    //      }
+    // }
+    //
 
     companion object {
         /*    static void two_predictor() {
+        // TODO wait until later to work with UI on this
         //2k predictor code
         System.out.println("You are now in the 2k predictor workout!");
         //
@@ -1094,6 +1171,7 @@ class workouts : AppCompatActivity() {
        return data;
     }*/
         /*    public ArrayList<DataPoint> power_vs_time() {
+        // TODO wait until later to work with UI on this
         //power vs time graph for pace workout
         //time_33 and power
         System.out.println("You are in power vs time graph method!");
@@ -1107,10 +1185,13 @@ class workouts : AppCompatActivity() {
         }
         return data;
     }*/
+
+
         fun interval_predictor(interval_num: String, fail_count: Int) {
             println()
             println("You are in interval predictor method!")
             // TODO incorporate UI
+            // TODO toast or println function
             //finish, did i finish?
             //interval method 1 predictions
             if (interval_num === "1") {
@@ -1142,6 +1223,7 @@ class workouts : AppCompatActivity() {
             println()
             println("You are in pace predictor method!")
             // TODO integrate UI
+            // TODO toast or println functions
             //interval method 1 predictions
             //finish, did i finish?
             if (pace_num === "20") {
@@ -1163,15 +1245,6 @@ class workouts : AppCompatActivity() {
                     println("You did well! Nice work!")
                 }
             }
-        } //static void power_predictor() {
-        //look at history table and make predictions based on average power of previous workouts
-        //if the history table has more than 1 entry
-        // if (len(data_table) > 1) {
-        //     linear regression of watts with dates
-        //     if slope is positive make prediction of how many more workouts to do to get x watts of output
-        //     if slope is negative, make prediction of which workouts to work on? which workout is causing the decrease in power output
-        //      }
-        // }
-        //
+        }
     }
 }

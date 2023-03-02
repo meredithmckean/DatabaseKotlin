@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:visibility="visible"
-    tools:context=".MainActivity">
+    tools:context=".ActivityKotlin">
 
     <TextView
         android:id="@+id/texttitle"
@@ -104,14 +104,14 @@
 
 
 
-    <!--    <Button
+        <Button
             android:id="@+id/btnUpdateFTP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:layout_marginTop="5dp"
-            android:layout_below="@id/btnUpdatePassword"
-            android:text="Update FTP"/>-->
+            android:layout_below="@id/btnWorkout"
+            android:text="Update FTP"/>
 
     <!--    <Button
             android:id="@+id/btnUpdateFTP"

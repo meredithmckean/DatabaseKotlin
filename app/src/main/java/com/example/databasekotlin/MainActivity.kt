@@ -1,12 +1,10 @@
 package com.example.databasekotlin
 
-import com.example.databasekotlin.workouts
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 //import kotlin.coroutines.jvm.internal.CompletedContinuation.context
 //import kotlinx.coroutines
@@ -25,11 +23,11 @@ class ActivityKotlin : AppCompatActivity() {
     lateinit var btn_delete_tables: Button //there
     lateinit var btn_enter_data_33_35: Button
     lateinit var btn_workout: Button
-
+    lateinit var btn_update_FTP: Button
 
     /*lateinit var btn_user_info: Button
     lateinit var btn_class_testing: Button
-    lateinit var btn_update_FTP: Button
+
     lateinit var btn_history_error_tables: Button
     lateinit var btn_view_history_error_tables: Button*/
 
@@ -47,7 +45,7 @@ class ActivityKotlin : AppCompatActivity() {
         //btn_user_info = findViewById(R.id.btnUserInfo)
         //btn_class_testing = findViewById(R.id.btnClassTesting)
         btn_update_password = findViewById(R.id.btnUpdatePassword)
-        //btn_update_FTP = findViewById(R.id.btnUpdateFTP)
+        btn_update_FTP = findViewById(R.id.btnUpdateFTP)
         btn_delete_tables = findViewById(R.id.btnDeleteTables)
         //btn_history_error_tables = findViewById(R.id.btnHistoryErrorTables)
         //btn_view_history_error_tables = findViewById(R.id.btnViewHistoryErrorTables)
@@ -63,7 +61,7 @@ class ActivityKotlin : AppCompatActivity() {
         val pz_5 = 5
         val pz_6 = 6
         val pz_7 = 7
-        val time_33 = 1201.0
+        val time_33 = 2460.0
         val interval = 2
         val power = 3
         val total_cal = 4
@@ -300,7 +298,7 @@ class ActivityKotlin : AppCompatActivity() {
                     .show()
             }
         })
-/*        btn_update_FTP.setOnClickListener(View.OnClickListener {
+        btn_update_FTP.setOnClickListener(View.OnClickListener {
             val db = DatabaseHelper(this@ActivityKotlin) //making reference to database
             val usernameTXT = et_username.getText().toString()
             val passwordTXT = et_password.getText().toString()
@@ -313,7 +311,8 @@ class ActivityKotlin : AppCompatActivity() {
             } else {
                 Toast.makeText(this@ActivityKotlin, "FTP is not Updated", Toast.LENGTH_SHORT).show()
             }
-        })*/
+        })
+
         btn_delete_tables.setOnClickListener(View.OnClickListener {
             val db = DatabaseHelper(this@ActivityKotlin) //making reference to database
             val success1 = db.delete_dataframe33_table()
@@ -414,8 +413,10 @@ class ActivityKotlin : AppCompatActivity() {
             val passwordTXT = et_password.getText().toString()
             val workouts = workouts()
             val pow = workouts.ftpCalc(usernameTXT, db)
-            Toast.makeText(this@ActivityKotlin, "Testing Workout", Toast.LENGTH_SHORT).show()
-            Toast.makeText(this@ActivityKotlin, "time $pow", Toast.LENGTH_SHORT).show()
+            //val count = workouts.interval_1(db)
+            //val pacefail = workouts.pace(20, db)
+            Toast.makeText(this@ActivityKotlin, "Testing FTP Calc Workout", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@ActivityKotlin, "FTP $pow", Toast.LENGTH_SHORT).show()
         })
         btn_enter_data_33_35.setOnClickListener(View.OnClickListener {
             //Testing User class
@@ -427,7 +428,7 @@ class ActivityKotlin : AppCompatActivity() {
             val databaseHelper = DatabaseHelper(this@ActivityKotlin) //making reference to database
 
             //Testing dataframe33
-            val realdata1 = dataframe33(time_33, interval, power, total_cal, split_pace, split_power, split_cal, last_split_time, last_split_dist)
+            val realdata1 = data33(time_33, interval, power, total_cal, split_pace, split_power, split_cal, last_split_time, last_split_dist)
             Toast.makeText(this@ActivityKotlin, realdata1.toString(), Toast.LENGTH_SHORT).show() //Testing
             val success1 = databaseHelper.add_dataframe33(realdata1)
             if (success1 == true) {
@@ -438,7 +439,7 @@ class ActivityKotlin : AppCompatActivity() {
 
 
             //Testing dataframe35
-            val realdata2 = dataframe35(time_35, dist, drive_len, drive_time, stroke_rec_time, stroke_dist, peak_drive_force, avg_drive_force, work_per_stroke, stroke_count)
+            val realdata2 = data35(time_35, dist, drive_len, drive_time, stroke_rec_time, stroke_dist, peak_drive_force, avg_drive_force, work_per_stroke, stroke_count)
             Toast.makeText(this@ActivityKotlin, realdata2.toString(), Toast.LENGTH_SHORT).show() //Testing
             val success2 = databaseHelper.add_dataframe35(realdata2)
             if (success2 == true) {
