@@ -35,7 +35,6 @@
         android:inputType="textPassword"
         android:textSize="24dp" />
 
-
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
@@ -64,42 +63,22 @@
         android:text="Delete Account"/>
 
     <Button
-        android:id="@+id/btnUpdateFTP"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/btnUpdatePassword"
-        android:text="Update FTP"/>
-
-    <Button
-        android:id="@+id/btnUserInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/btnDelete"
-        android:text="Testing Go Getters"/>
-
-    <Button
-        android:id="@+id/btnClassTesting"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/btnUserInfo"
-        android:text="Class Testing"/>
-
-    <Button
         android:id="@+id/btnUpdatePassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_marginTop="5dp"
-        android:layout_below="@id/btnClassTesting"
+        android:layout_below="@id/btnDelete"
         android:text="Update Password"/>
 
-
+    <Button
+        android:id="@+id/btnEnterData3335"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/btnUpdatePassword"
+        android:text="enter data for 33 and 35 tables"/>
 
     <Button
         android:id="@+id/btnDeleteTables"
@@ -107,26 +86,41 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_marginTop="5dp"
-        android:layout_below="@id/btnUpdateFTP"
+        android:layout_below="@id/btnEnterData3335"
         android:text="Delete Real Time Tables"/>
 
     <Button
-        android:id="@+id/btnHistoryErrorTables"
+        android:id="@+id/btnWorkout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_marginTop="5dp"
         android:layout_below="@id/btnDeleteTables"
-        android:text="Insert Hist/Error Tables"/>
+        android:text="workout testing"/>
 
-    <Button
-        android:id="@+id/btnViewHistoryErrorTables"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/btnHistoryErrorTables"
-        android:text="View Hist/Error Tables"/>
+
+
+
+
+
+
+        <Button
+            android:id="@+id/btnUpdateFTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/btnWorkout"
+            android:text="Update FTP"/>
+
+    <!--    <Button
+            android:id="@+id/btnUpdateFTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/btnUpdatePassword"
+            android:text="Update FTP"/>-->
 
 
 </RelativeLayout>

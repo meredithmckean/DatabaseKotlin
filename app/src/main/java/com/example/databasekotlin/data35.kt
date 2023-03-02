@@ -1,6 +1,6 @@
 package com.example.databasekotlin
 
-class dataframe35 {
+class data35 {
     var time_35 = 0.0
     var dist = 0.0
     var drive_len = 0.0

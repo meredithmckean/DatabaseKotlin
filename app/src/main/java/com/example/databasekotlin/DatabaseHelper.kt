@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper
 //import java.text.SimpleDateFormat;
 //import java.util.Date;
 class DatabaseHelper  //Constructor
+//changed
     (context: Context?) :
     SQLiteOpenHelper(context, "Smart_Rower_Tables.db", null, 2) {
     //methods that must be implemented
@@ -74,7 +75,7 @@ class DatabaseHelper  //Constructor
         }
     }
 
-    fun add_dataframe33(dataframe33: dataframe33): Boolean {
+    fun add_dataframe33(dataframe33: data33): Boolean {
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put(COLUMN_TIME_33, dataframe33.getTime_33())
@@ -92,7 +93,7 @@ class DatabaseHelper  //Constructor
         return insert != -1L
     }
 
-    fun add_dataframe35(dataframe35: dataframe35): Boolean {
+    fun add_dataframe35(dataframe35: data35): Boolean {
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put(COLUMN_TIME_35, dataframe35.getTime_35())
@@ -258,11 +259,31 @@ class DatabaseHelper  //Constructor
         return DB.rawQuery("Select * from history_info where COLUMN_USER = ?", arrayOf(username))
     }
 
+    fun getAllPower(username: String, workout_type: String): ArrayList<*>? {
+        val DB = this.readableDatabase
+        val cursor = DB.rawQuery(
+            "Select * from history_info where COLUMN_USER = ? AND + COLUMN_WORKOUT = ?",
+            arrayOf(username, workout_type)
+        )
+        //Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + User.TABLE_NAME + " WHERE "+ User.COL_NAME + " = ? AND " + User.COL_PASS +" = ?", new String[]{UserName , PassWord});
+        val allPower = ArrayList<String>()
+        while (cursor.moveToNext()) {
+            allPower.add(cursor.getString(5))
+        }
+        cursor.close()
+        return allPower
+    }
+
     /*    public Cursor get_error(String username) {  //display history table user specific
         SQLiteDatabase DB = this.getReadableDatabase();
         Cursor cursor = DB.rawQuery("Select * from error_info where COLUMN_USER = ?", new String[]{username});//Find the data
         return cursor;
     }*/
+
+
+
+
+
     //Go getters for User
     fun getPassword(username: String): String //Username and password entered
     {
