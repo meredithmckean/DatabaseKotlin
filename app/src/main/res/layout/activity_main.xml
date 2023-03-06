@@ -99,19 +99,23 @@
         android:text="workout testing"/>
 
 
+    <Button
+        android:id="@+id/btnUpdateFTP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/btnWorkout"
+        android:text="Update FTP"/>
 
-
-
-
-
-        <Button
-            android:id="@+id/btnUpdateFTP"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_below="@id/btnWorkout"
-            android:text="Update FTP"/>
+    <Button
+        android:id="@+id/btn_history_error_tables"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/btnUpdateFTP"
+        android:text="Enter History Data"/>
 
     <!--    <Button
             android:id="@+id/btnUpdateFTP"

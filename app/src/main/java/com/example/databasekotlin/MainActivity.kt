@@ -24,12 +24,11 @@ class ActivityKotlin : AppCompatActivity() {
     lateinit var btn_enter_data_33_35: Button
     lateinit var btn_workout: Button
     lateinit var btn_update_FTP: Button
-
-    /*lateinit var btn_user_info: Button
-    lateinit var btn_class_testing: Button
-
     lateinit var btn_history_error_tables: Button
-    lateinit var btn_view_history_error_tables: Button*/
+    //lateinit var btn_user_info: Button
+    //lateinit var btn_class_testing: Button
+
+    //lateinit var btn_view_history_error_tables: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) { //starts the application
@@ -47,7 +46,7 @@ class ActivityKotlin : AppCompatActivity() {
         btn_update_password = findViewById(R.id.btnUpdatePassword)
         btn_update_FTP = findViewById(R.id.btnUpdateFTP)
         btn_delete_tables = findViewById(R.id.btnDeleteTables)
-        //btn_history_error_tables = findViewById(R.id.btnHistoryErrorTables)
+        btn_history_error_tables = findViewById(R.id.btn_history_error_tables)
         //btn_view_history_error_tables = findViewById(R.id.btnViewHistoryErrorTables)
         btn_enter_data_33_35 = findViewById(R.id.btnEnterData3335)
         btn_workout = findViewById(R.id.btnWorkout)
@@ -322,13 +321,13 @@ class ActivityKotlin : AppCompatActivity() {
             Toast.makeText(this@ActivityKotlin, "dataframe35 table Deleted", Toast.LENGTH_SHORT)
                 .show()
         })
-/*        btn_history_error_tables.setOnClickListener(View.OnClickListener {
+        btn_history_error_tables.setOnClickListener(View.OnClickListener {
             val db = DatabaseHelper(this@ActivityKotlin) //making reference to database
             val usernameTXT = et_username.getText().toString()
             val passwordTXT = et_password.getText().toString()
 
             //Testing adding to history table
-            val success1 = db.add_history(usernameTXT, workout_num, error, avg_power)
+            val success1 = db.add_history(usernameTXT, "interval1", 23, 40.0)
             if (success1 == true) {
                 Toast.makeText(
                     this@ActivityKotlin,
@@ -344,16 +343,16 @@ class ActivityKotlin : AppCompatActivity() {
             }
 
 
-            *//*                //Testing adding to error table
-                            int error = 5;
+                            //Testing adding to error table
+ /*                           int error = 5;
                             boolean success2 = db.add_error(usernameTXT,error);
                             if (success2 == true){
                                 Toast.makeText(MainActivity.this, "error added to history table", Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 Toast.makeText(MainActivity.this, "error not added to history table", Toast.LENGTH_SHORT).show();
-                            }*//*
-        })*/
+                            }*/
+        })
 /*        btn_view_history_error_tables.setOnClickListener(View.OnClickListener {
             val db = DatabaseHelper(this@ActivityKotlin) //making reference to database
             val usernameTXT = et_username.getText().toString()
@@ -417,6 +416,12 @@ class ActivityKotlin : AppCompatActivity() {
             //val pacefail = workouts.pace(20, db)
             Toast.makeText(this@ActivityKotlin, "Testing FTP Calc Workout", Toast.LENGTH_SHORT).show()
             Toast.makeText(this@ActivityKotlin, "FTP $pow", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@ActivityKotlin, "about to do prediction", Toast.LENGTH_SHORT).show()
+
+            //TODO need to streamline names
+            val allpower = db.getAllPower(username, "interval1")
+            val predic = workouts.powerPredictor(allpower)
+            Toast.makeText(this@ActivityKotlin, "Prediction $predic", Toast.LENGTH_SHORT).show()
         })
         btn_enter_data_33_35.setOnClickListener(View.OnClickListener {
             //Testing User class
