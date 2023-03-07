@@ -327,7 +327,7 @@ class ActivityKotlin : AppCompatActivity() {
             val passwordTXT = et_password.getText().toString()
 
             //Testing adding to history table
-            val success1 = db.add_history(usernameTXT, "interval1", 23, 40.0)
+            val success1 = db.add_history("aly", "interval1", 23, 40.0)
             if (success1 == true) {
                 Toast.makeText(
                     this@ActivityKotlin,
@@ -419,9 +419,9 @@ class ActivityKotlin : AppCompatActivity() {
             Toast.makeText(this@ActivityKotlin, "about to do prediction", Toast.LENGTH_SHORT).show()
 
             //TODO need to streamline names
-            val allpower = db.getAllPower(username, "interval1")
+            val allpower = db.getAllPower("aly", "interval1")
             val predic = workouts.powerPredictor(allpower)
-            Toast.makeText(this@ActivityKotlin, "Prediction $predic", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@ActivityKotlin, "Prediction $predic watts", Toast.LENGTH_SHORT).show()
         })
         btn_enter_data_33_35.setOnClickListener(View.OnClickListener {
             //Testing User class
